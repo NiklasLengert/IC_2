@@ -6,80 +6,124 @@
     <title>AI Learning Journey</title>
     <link rel="stylesheet" href="style.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <header>
-      <div class="container">
-        <h1>AI & Coding <span class="highlight">Learnings</span></h1>
-        <p>
-          Documenting the journey of mastering AI interactions. By Niklas
-          Lengert (s0563290)
-        </p>
-      </div>
-    </header>
+    <!-- Animated background -->
+    <div class="background-gradient"></div>
+    <div class="background-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
 
-    <main class="container">
-      <div class="pipeline">
-        <!-- Session 1 -->
-        <div class="pipeline-step" data-status="completed">
-          <div class="step-marker"></div>
-          <div class="step-content">
-            <span class="date">First Session</span>
+    <div class="content-wrapper">
+      <!-- Glass header -->
+      <header class="glass-container">
+        <div class="header-content">
+          <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="18" stroke="url(#grad1)" stroke-width="2"/>
+              <path d="M15 20L18 23L25 16" stroke="url(#grad1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <h1>AI Learning Journey</h1>
+          </div>
+          <p class="subtitle">
+            Documenting my path to mastering Artificial Intelligence
+          </p>
+          <div class="author">Niklas Lengert <span>•</span> s0563290</div>
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <main class="container">
+        <!-- Learning Sessions Timeline -->
+        <div class="sessions-container">
+          <!-- Session 1 -->
+          <div class="session-card glass-card" data-status="completed">
+            <div class="session-header">
+              <span class="session-date">First Session</span>
+            </div>
             <h2>Project Setup & Basics</h2>
             <p>
               Initialized the Jupyter Notebook environment and explored basic AI
               concepts. Set up the workspace and defined the learning goals.
             </p>
-            <a href="#" class="btn">View Notebook</a>
+            <div class="session-footer">
+              <a href="#" class="btn-primary">View Notebook</a>
+              <div class="session-meta">
+                <span>📚 Fundamentals</span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- Session 2 -->
-        <div class="pipeline-step" data-status="in-progress">
-          <div class="step-marker"></div>
-          <div class="step-content">
-            <span class="date">Second Session</span>
+          <!-- Session 2 -->
+          <div class="session-card glass-card" data-status="in-progress">
+            <div class="session-header">
+              <span class="session-date">Second Session</span>
+            </div>
             <h2>Building the Visualization</h2>
             <p>
               Creating this HTML/CSS pipeline to visualize progress. Learning
               how to integrate web technologies with documentation.
             </p>
-            <a href="#" class="btn">View Notebook</a>
+            <div class="session-footer">
+              <a href="#" class="btn-primary">View Notebook</a>
+              <div class="session-meta">
+                <span>🎨 Web Development</span>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- Future Session Placeholder -->
-        <div class="pipeline-step" data-status="pending">
-          <div class="step-marker"></div>
-          <div class="step-content">
-            <span class="date">Third Session</span>
+          <!-- Session 3 -->
+          <div class="session-card glass-card" data-status="pending">
+            <div class="session-header">
+              <span class="session-date">Third Session</span>
+            </div>
             <h2>Data Analysis with AI</h2>
             <p>
-              Planned: Using AI tools to analyze datasets and generate insights
-              automatically.
+              Using AI tools to analyze datasets and generate insights
+              automatically. Exploring data preprocessing and visualization techniques.
             </p>
+            <div class="session-footer">
+              <div class="session-meta">
+                <span>📊 Data Science</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <!-- Future Session Placeholder -->
-        <div class="pipeline-step" data-status="pending">
-          <div class="step-marker"></div>
-          <div class="step-content">
-            <span class="date">Fourth Session</span>
+
+          <!-- Session 4 -->
+          <div class="session-card glass-card" data-status="pending">
+            <div class="session-header">
+              <span class="session-date">Fourth Session</span>
+            </div>
             <h2>Model Training</h2>
             <p>
-              Planned: Training a simple model to understand the feedback loop.
+              Training a simple machine learning model to understand the feedback loop.
+              Exploring different algorithms and optimization techniques.
             </p>
+            <div class="session-footer">
+              <div class="session-meta">
+                <span>🤖 Machine Learning</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
 
-    <footer>
-      <p>Created by Niklas</p>
-    </footer>
+      <!-- Footer -->
+      <footer class="glass-card">
+        <p>Built by Niklas • 2026</p>
+      </footer>
+    </div>
 
     <script src="script.js"></script>
   </body>
