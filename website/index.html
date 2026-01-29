@@ -45,6 +45,19 @@
 
       <!-- Main content -->
       <main class="container">
+        <!-- Notebook Viewer Modal -->
+        <div id="notebook-modal" class="modal">
+          <div class="modal-content glass-card">
+            <div class="modal-header">
+              <h2 id="notebook-title">Notebook</h2>
+              <button class="close-btn" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <iframe id="notebook-frame" src="" frameborder="0"></iframe>
+            </div>
+          </div>
+        </div>
+
         <!-- Learning Sessions Timeline -->
         <div class="sessions-container">
           <!-- Session 1 -->
@@ -52,33 +65,40 @@
             <div class="session-header">
               <span class="session-date">First Session</span>
             </div>
-            <h2>Project Setup & Basics</h2>
+            <h2>Intelligente Literatursuche mit NLP</h2>
             <p>
-              Initialized the Jupyter Notebook environment and explored basic AI
-              concepts. Set up the workspace and defined the learning goals.
+              Entwicklung eines Systems zur semantischen Literatursuche. 
+              Einsatz von spaCy für Schlüsselphrasen-Extraktion und Gemini API für 
+              thematische Zusammenfassung wissenschaftlicher Anfragen.
             </p>
             <div class="session-footer">
-              <a href="#" class="btn-primary">View Notebook</a>
+              <div class="button-group">
+                <a href="#" class="btn-primary" id="load-notebook-1">View Notebook</a>
+                <a href="assets/notebooks/IC2_01.ipynb" class="btn-secondary" download>Download Notebook</a>
+              </div>
               <div class="session-meta">
-                <span>📚 Fundamentals</span>
+                <span>NLP & LLMs</span>
               </div>
             </div>
           </div>
 
           <!-- Session 2 -->
-          <div class="session-card glass-card" data-status="in-progress">
+          <div class="session-card glass-card" data-status="pending">
             <div class="session-header">
               <span class="session-date">Second Session</span>
             </div>
-            <h2>Building the Visualization</h2>
+            <h2>Data Analysis with AI</h2>
             <p>
-              Creating this HTML/CSS pipeline to visualize progress. Learning
-              how to integrate web technologies with documentation.
+              Using AI tools to analyze datasets and generate insights
+              automatically. Exploring data preprocessing and visualization techniques.
             </p>
             <div class="session-footer">
-              <a href="#" class="btn-primary">View Notebook</a>
+              <div class="button-group">
+                <a href="#" class="btn-primary" id="load-notebook-2">View Notebook</a>
+                <a href="assets/notebooks/IC2_02.ipynb" class="btn-secondary" download>Download Notebook</a>
+              </div>
               <div class="session-meta">
-                <span>🎨 Web Development</span>
+                <span>Data Science</span>
               </div>
             </div>
           </div>
@@ -88,31 +108,18 @@
             <div class="session-header">
               <span class="session-date">Third Session</span>
             </div>
-            <h2>Data Analysis with AI</h2>
-            <p>
-              Using AI tools to analyze datasets and generate insights
-              automatically. Exploring data preprocessing and visualization techniques.
-            </p>
-            <div class="session-footer">
-              <div class="session-meta">
-                <span>📊 Data Science</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Session 4 -->
-          <div class="session-card glass-card" data-status="pending">
-            <div class="session-header">
-              <span class="session-date">Fourth Session</span>
-            </div>
             <h2>Model Training</h2>
             <p>
               Training a simple machine learning model to understand the feedback loop.
               Exploring different algorithms and optimization techniques.
             </p>
             <div class="session-footer">
+              <div class="button-group">
+                <a href="#" class="btn-primary">View Notebook</a>
+                <a href="#" class="btn-secondary" download>Download Notebook</a>
+              </div>
               <div class="session-meta">
-                <span>🤖 Machine Learning</span>
+                <span>Machine Learning</span>
               </div>
             </div>
           </div>
