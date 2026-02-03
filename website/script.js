@@ -53,8 +53,13 @@ function addRippleEffect() {
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      // Skip empty anchors (just "#")
+      if (href === '#' || href.length <= 1) {
+        return;
+      }
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
+      const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({
           behavior: 'smooth',
@@ -106,6 +111,7 @@ function initNotebookViewer() {
   // Notebook button handlers
   const loadNotebook1Btn = document.getElementById('load-notebook-1');
   const loadNotebook2Btn = document.getElementById('load-notebook-2');
+  const loadNotebook3Btn = document.getElementById('load-notebook-3');
   
   if (loadNotebook1Btn) {
     loadNotebook1Btn.addEventListener('click', (e) => {
@@ -118,6 +124,13 @@ function initNotebookViewer() {
     loadNotebook2Btn.addEventListener('click', (e) => {
       e.preventDefault();
       openNotebook('assets/notebooks/IC2_02.ipynb', 'Session 2: KI-gestützte Datenanalyse');
+    });
+  }
+
+  if (loadNotebook3Btn) {
+    loadNotebook3Btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openNotebook('assets/notebooks/IC2_03.ipynb', 'Session 3: Model Training');
     });
   }
 
