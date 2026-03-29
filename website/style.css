@@ -506,7 +506,6 @@ footer p {
 
 .close-btn:hover {
   background: rgba(255, 255, 255, 0.1);
-  transform: rotate(90deg);
 }
 
 .modal-body {
@@ -534,5 +533,166 @@ footer p {
   
   .modal-header h2 {
     font-size: 1.25rem;
+  }
+}
+
+/* ============================================
+   README Buttons (Header)
+   ============================================ */
+.readme-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--spacing-md);
+}
+
+.btn-readme-view {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 0.65rem 1.4rem;
+  background: var(--primary-gradient);
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  font-family: "Poppins", sans-serif;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-readme-view:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-readme-download {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 0.65rem 1.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+}
+
+.btn-readme-download:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   README Modal Body
+   ============================================ */
+.readme-modal-content {
+  max-width: 860px;
+}
+
+.readme-body {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  overflow-y: auto;
+  height: 100%;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.readme-body h1 {
+  font-size: 1.8rem;
+  margin: 1.4rem 0 0.6rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.readme-body h2 {
+  font-size: 1.35rem;
+  margin: 1.2rem 0 0.5rem;
+  color: #a5b4fc;
+}
+
+.readme-body h3 {
+  font-size: 1.1rem;
+  margin: 1rem 0 0.4rem;
+  color: #c4b5fd;
+}
+
+.readme-body p {
+  margin: 0.3rem 0;
+}
+
+.readme-body ul {
+  padding-left: 1.5rem;
+  margin: 0.4rem 0;
+}
+
+.readme-body li {
+  margin: 0.25rem 0;
+}
+
+.readme-body code {
+  background: rgba(102, 126, 234, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "Consolas", "Monaco", monospace;
+  font-size: 0.88em;
+  color: #a5f3fc;
+}
+
+.readme-body pre.readme-code-block {
+  background: rgba(0, 0, 0, 0.4);
+  border-left: 3px solid #667eea;
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin: 0.8rem 0;
+  overflow-x: auto;
+  font-family: "Consolas", "Monaco", monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+  white-space: pre;
+}
+
+.readme-body pre.readme-code-block code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.readme-body hr {
+  border: none;
+  border-top: 1px solid var(--glass-border);
+  margin: 1.2rem 0;
+}
+
+.readme-body a {
+  color: #818cf8;
+  text-decoration: underline;
+}
+
+.readme-body a:hover {
+  color: #a5b4fc;
+}
+
+@media (max-width: 768px) {
+  .readme-body {
+    padding: var(--spacing-md);
+  }
+
+  .readme-buttons {
+    gap: var(--spacing-xs);
   }
 }

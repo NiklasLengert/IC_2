@@ -33,11 +33,28 @@
             Jedes Notebook kann direkt im Browser angesehen oder heruntergeladen werden.
           </p>
           <div class="author">Niklas Lengert <span>•</span> s0563290</div>
+          <div class="readme-buttons">
+            <button class="btn-readme-view" id="open-readme">README ansehen</button>
+            <a href="assets/README.md" class="btn-readme-download" download>README herunterladen</a>
+          </div>
         </div>
       </header>
 
       <!-- Main content -->
       <main class="container">
+        <!-- README Viewer Modal -->
+        <div id="readme-modal" class="modal">
+          <div class="modal-content glass-card readme-modal-content">
+            <div class="modal-header">
+              <h2>README</h2>
+              <button class="close-btn" id="close-readme-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div id="readme-body" class="readme-body"></div>
+            </div>
+          </div>
+        </div>
+
         <!-- Notebook Viewer Modal -->
         <div id="notebook-modal" class="modal">
           <div class="modal-content glass-card">

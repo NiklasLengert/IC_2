@@ -403,6 +403,7 @@ plt.show()
 
 ## Autor
 
+**Niklas Lengert** | s0563290  
 Projekt im Rahmen des Independent Coursework  
 **HTW Berlin** | Wintersemester 2025/2026
 

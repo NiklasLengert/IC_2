@@ -254,6 +254,118 @@ function initNotebookViewer() {
 }
 
 // ============================================
+// README Viewer Modal
+// ============================================
+function initReadmeViewer() {
+  const modal = document.getElementById('readme-modal');
+  const openBtn = document.getElementById('open-readme');
+  const closeBtn = document.getElementById('close-readme-modal');
+  const readmeBody = document.getElementById('readme-body');
+
+  if (openBtn) {
+    openBtn.addEventListener('click', async () => {
+      try {
+        const response = await fetch('assets/README.md');
+        if (!response.ok) throw new Error('Datei nicht gefunden');
+        const text = await response.text();
+        readmeBody.innerHTML = renderMarkdown(text);
+      } catch (err) {
+        readmeBody.innerHTML = `<p style="color:#f5576c;">README konnte nicht geladen werden: ${err.message}</p>`;
+      }
+      modal.style.display = 'flex';
+      setTimeout(() => modal.classList.add('modal-visible'), 10);
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeReadmeModal);
+  }
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeReadmeModal();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+      closeReadmeModal();
+    }
+  });
+
+  function closeReadmeModal() {
+    modal.classList.remove('modal-visible');
+    setTimeout(() => {
+      modal.style.display = 'none';
+      readmeBody.innerHTML = '';
+    }, 300);
+  }
+
+  function renderMarkdown(text) {
+    // Step 1: Extract code blocks and replace with placeholders
+    const codeBlocks = [];
+    text = text.replace(/```(?:\w*)\n([\s\S]*?)```/g, (_, code) => {
+      const idx = codeBlocks.length;
+      codeBlocks.push(`<pre class="readme-code-block"><code>${escHtml(code.trimEnd())}</code></pre>`);
+      return `\x00CODE_BLOCK_${idx}\x00`;
+    });
+
+    const lines = text.split('\n');
+    let html = '';
+    let inUl = false;
+
+    for (const raw of lines) {
+      const line = raw;
+
+      // Code block placeholder passthrough
+      const cbMatch = line.match(/^\x00CODE_BLOCK_(\d+)\x00$/);
+      if (cbMatch) {
+        if (inUl) { html += '</ul>'; inUl = false; }
+        html += codeBlocks[parseInt(cbMatch[1])];
+        continue;
+      }
+
+      // Headings
+      if (/^### /.test(line)) { if (inUl) { html += '</ul>'; inUl = false; } html += `<h3>${inline(line.slice(4))}</h3>`; continue; }
+      if (/^## /.test(line))  { if (inUl) { html += '</ul>'; inUl = false; } html += `<h2>${inline(line.slice(3))}</h2>`; continue; }
+      if (/^# /.test(line))   { if (inUl) { html += '</ul>'; inUl = false; } html += `<h1>${inline(line.slice(2))}</h1>`; continue; }
+
+      // Horizontal rule
+      if (/^---+$/.test(line.trim())) { if (inUl) { html += '</ul>'; inUl = false; } html += '<hr>'; continue; }
+
+      // Unordered list
+      if (/^[*\-] /.test(line)) {
+        if (!inUl) { html += '<ul>'; inUl = true; }
+        html += `<li>${inline(line.slice(2))}</li>`;
+        continue;
+      }
+      if (inUl) { html += '</ul>'; inUl = false; }
+
+      // Empty / whitespace line
+      if (line.trim() === '') { html += '<br>'; continue; }
+
+      html += `<p>${inline(line)}</p>`;
+    }
+
+    if (inUl) html += '</ul>';
+    return html;
+
+    function escHtml(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function inline(s) {
+      s = escHtml(s);
+      s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      s = s.replace(/\*(.+?)\*/g, '<em>$1</em>');
+      s = s.replace(/`(.+?)`/g, '<code>$1</code>');
+      s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+      return s;
+    }
+  }
+}
+
+// ============================================
 // Initialize Everything on DOM Load
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -262,6 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initParallax();
   initNotebookViewer();
+  initReadmeViewer();
 
   // Add entrance animation to page
   document.body.style.opacity = '0';
