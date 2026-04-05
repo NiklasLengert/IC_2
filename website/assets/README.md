@@ -44,13 +44,13 @@ Eine intelligente Literatursuche, die semantische Anfragen versteht und passende
 
 **1. Setup & Dependencies**
 ```python
-!pip install spacy gradio google-generativeai
+!pip install spacy gradio google-genai
 !python -m spacy download de_core_news_lg
 ```
 Installiert die benötigten Bibliotheken:
 - `spacy`: NLP-Bibliothek für Named Entity Recognition und Keyword-Extraktion
 - `gradio`: Framework für die interaktive Benutzeroberfläche
-- `google-generativeai`: Zugriff auf die Gemini API
+- `google-genai`: Zugriff auf die Gemini API (neue offizielle Google GenAI SDK)
 - `de_core_news_lg`: Großes deutsches Sprachmodell für spaCy
 
 **2. NLP-Pipeline mit spaCy**
@@ -87,15 +87,16 @@ interface.launch()
 
 **4. Gemini API Integration**
 ```python
-import google.generativeai as genai
-genai.configure(api_key="YOUR_API_KEY")
+from google import genai
 
-model = genai.GenerativeModel('gemini-1.5-flash')
-response = model.generate_content(prompt)
+client = genai.Client(api_key="YOUR_API_KEY")
+response = client.models.generate_content(
+    model='gemini-2.0-flash',
+    contents=prompt
+)
 ```
-- Konfiguriert die Gemini API
-- `GenerativeModel`: Wählt das Gemini-Modell aus
-- `generate_content()`: Sendet den Prompt und erhält KI-generierte Antwort
+- Erstellt einen `Client` mit dem API-Key
+- `client.models.generate_content()`: Sendet den Prompt an das gewählte Modell und erhält KI-generierte Antwort
 - Das LLM fasst die extrahierten Keyphrases zusammen und schlägt Suchbegriffe vor
 
 **Workflow:**
@@ -187,7 +188,10 @@ Identifiziere:
 3. Konkrete Handlungsempfehlungen
 """
 
-response = model.generate_content(prompt)
+response = client.models.generate_content(
+    model='gemini-2.0-flash',
+    contents=prompt
+)
 print(response.text)
 ```
 - Erstellt strukturierte Zusammenfassung der Daten

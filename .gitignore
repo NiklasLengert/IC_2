@@ -14,3 +14,9 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Certificates and sensitive files
+*.pem
+*.key
+*.crt
+*.cer
