@@ -20,3 +20,6 @@ Thumbs.db
 *.key
 *.crt
 *.cer
+
+# Scripts (local only, not for GitHub)
+website/assets/scripts/
